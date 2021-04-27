@@ -1,0 +1,34 @@
+﻿@model Proyecto
+
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<h2>Nuevo Proyecto</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+<form method="POST">
+    <div class="form-group">
+        <label asp-for="ProyectoName" class="form-control">Nombre del Proyecto</label>
+        <input type="text" asp-for="ProyectoName">
+        <span asp-validation-for="ProyectoName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmpresaRfc" class="form-control">Seleccione una Empresa</label>
+        @Html.DropDownList("EmpresaRfc", new SelectList(@ViewBag.Empresas, "Text", "Value"))
+        <span asp-validation-for="EmpresaRfc" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserId" class="form-control">Seleccione un Manager de Proyecto</label>
+        @Html.DropDownList("UserId", new SelectList(@ViewBag.AspNetUsers, "Text", "Value"))
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="hidden" asp-for="AuthSalida" value="NO">
+    </div>
+    <div class="form-group">
+        <input type="hidden" asp-for="AuthEntrada" value="NO">
+    </div>
+    <input type="submit" value="Guardar" />
+</form>

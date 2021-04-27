@@ -1,0 +1,39 @@
+﻿@model List<Salida>
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<div style="width: 100%; padding-bottom: 20px">
+    <div>
+        <div>
+            <h2>Herramienta/Dispositivos sacados del almacén</h2>
+        </div>
+        <div>
+            <a href="~/../Almacen/Salidas/AgregarSalidas/@ViewBag.ProyectoId">Agregar elemento</a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Modelo/Serie</th>
+            <th scope="col">Artículo</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Fecha</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var salida in @Model)
+        {
+            <tr>
+                <th scope="row">@salida.ArtModelo</th>
+                <td>@ViewBag.Context.CatArticulos.Find(@ViewBag.Context.InvArticulos.Find(salida.ArtModelo).ArtId).ArtNombre</td>
+                <td>@salida.Cantidad</td>
+                <td>@salida.Fecha</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

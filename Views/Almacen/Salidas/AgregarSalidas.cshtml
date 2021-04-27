@@ -1,0 +1,30 @@
+﻿@model Salida
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<h2>Agregar Herramienta/Dispositivo para salir del almacén</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+<form method="POST">
+    <div class="form-group">
+        <input type="hidden" asp-for="ProyectoId" value="@ViewBag.ProyectoId">
+    </div>
+    <div class="form-group">
+        <label asp-for="ArtModelo" class="form-control">Seleccione un artículo del stock</label>
+    @Html.DropDownList("ArtModelo", new SelectList(@ViewBag.Articulos, "Text", "Value"))
+    <span asp-validation-for="ArtModelo" class="text-danger"></span>
+</div>
+    <div class="form-group">
+        <label asp-for="Cantidad" class="form-control">Cantidad prestada</label>
+        <input type="number" asp-for="Cantidad" min="1" max="100">
+        <span asp-validation-for="Cantidad" class="text-danger"></span>
+    </div>
+    <!--<div class="form-group">
+        <label asp-for="Fecha" class="form-control">Fecha</label>
+        <input type="datetime-local" asp-for="Fecha">
+        <span asp-validation-for="Fecha" class="text-danger"></span>
+    </div>-->
+    <input type="submit" value="Guardar" />
+</form>

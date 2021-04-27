@@ -1,0 +1,71 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Agregar nuevo usuario - Silo Comunicaciones";
+}
+
+<h2>Agregar un nuevo usuario</h2>
+
+<form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+                <label asp-for="Input.Nombres"></label>
+                <input asp-for="Input.Nombres" class="form-control" />
+                <span asp-validation-for="Input.Nombres" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="Input.ApPat"></label>
+                <input asp-for="Input.ApPat" class="form-control" />
+                <span asp-validation-for="Input.ApPat" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="Input.ApMat"></label>
+                <input asp-for="Input.ApMat" class="form-control" />
+                <span asp-validation-for="Input.ApMat" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <label asp-for="Input.UserName"></label>
+                <input asp-for="Input.UserName" class="form-control" />
+                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Input.RFC"></label>
+                <input asp-for="Input.RFC" class="form-control" />
+                <span asp-validation-for="Input.RFC" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <button type="submit" class="btn btn-primary">Agregar nuevo usuario</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

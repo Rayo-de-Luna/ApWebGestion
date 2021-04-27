@@ -1,0 +1,49 @@
+﻿@model List<Proyecto>
+@{
+    ViewData["Title"] = "Silo Manager";
+    AspNetUser usuario;
+    Empresa empresa;
+}
+
+<div style="width: 100%; padding-bottom: 20px">
+    <div>
+        <div>
+            <h2>Proyectos</h2>
+        </div>
+        <div>
+            <a href="~/../Proyecto/CrearProyecto/">Crear nuevo proyecto</a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre del Proyecto</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Empresa RFC</th>
+            <th scope="col">Manager</th>
+            <th scope="col">Manager RFC</th>
+            <th scope="col">Editar</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var proyecto in @Model)
+        {
+            usuario = @ViewBag.Context.AspNetUsers.Find(proyecto.UserId);
+            empresa = @ViewBag.Context.Empresas.Find(proyecto.EmpresaRfc);
+            <tr>
+                <th scope="row">@proyecto.ProyectoId</th>
+                <td>@proyecto.ProyectoName</td>
+                <td>@empresa.EmpresaRazSoc</td>
+                <td>@empresa.EmpresaRfc</td>
+                <td>@usuario.Nombres @usuario.ApPat @usuario.ApMat</td>
+                <td>@usuario.RFC</td>
+                <td><a href="~/../Proyecto/EditarProyecto/@proyecto.ProyectoId">Editar</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

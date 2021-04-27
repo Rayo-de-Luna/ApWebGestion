@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using AWGestion.Areas.Identity.Data
+
+@model List<Proyecto>
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+@inject SignInManager<AWGestionUsers> SignInManager
+@inject UserManager<AWGestionUsers> UserManager
+
+<h2>Autorización de Salidas/Entradas del Almacén</h2>
+
+@if (TempData["Autorizacion"] != null)
+{
+    <div id="AutorizaMessage" class="alert alert-success alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        @TempData["Autorizacion"]
+    </div>
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre del Proyecto</th>
+                <th scope="col">Dispositivos/Material salido del almacén</th>
+                <th scope="col">Dispositivos/Material regresado del almacén</th>
+                <th scope="col">Autorización de Salida</th>
+                <th scope="col">Autorización de Entrada</th>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th scope="col">Autorizar Salida</th>
+                    <th scope="col">Autorizar Entrada</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var proyecto in @Model)
+            {
+                <tr>
+                    <th scope="row">@proyecto.ProyectoId</th>
+                    <td>@proyecto.ProyectoName</td>
+                    <td>
+                        <a href="~/../Almacen/Salidas/VerSalidas/@proyecto.ProyectoId">Ver</a>
+                    </td>
+                    <td>
+                        <a href="~/../Almacen/Entradas/VerEntradas/@proyecto.ProyectoId">Ver</a>
+                    </td>
+                    <td>
+                        <b>@proyecto.AuthSalida</b>
+                    </td>
+                    <td>
+                        <b>@proyecto.AuthEntrada</b>
+                    </td>
+                    <td>
+                        <a href="~/../AuthAlma/AutorizarSalida/@proyecto.ProyectoId">Autorizar</a>
+                    </td>
+                    <td>
+                        <a href="~/../AuthAlma/AutorizarEntrada/@proyecto.ProyectoId">Autorizar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,51 @@
+﻿@model List<Empresa>
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<div style="width: 100%; padding-bottom: 20px">
+    <div>
+        <div>
+            <h2>Directorio de Empresas</h2>
+        </div>
+        <div>
+            <a href="~/../Empresa/CrearEmpresa/">Crear nueva Empresa</a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">RFC</th>
+            <th scope="col">Razón social</th>
+            <th scope="col">Calle</th>
+            <th scope="col">Número interior</th>
+            <th scope="col">Número exterior</th>
+            <th scope="col">Código postal</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var empresa in @Model)
+        {
+            <tr>
+                <th scope="row">@empresa.EmpresaRfc</th>
+                <td>@empresa.EmpresaRazSoc</td>
+                <td>@empresa.EmpresaCalle</td>
+                <td>@empresa.EmpresaNumInt</td>
+                <td>@empresa.EmpresaNumExt</td>
+                <td>@empresa.EmpresaCp</td>
+                <td>@empresa.EmpresaCd</td>
+                <td>@empresa.EmpresaEdo</td>
+                <td><a href="~/../Empresa/EditarEmpresa/@empresa.EmpresaRfc">Editar</a></td>
+                <td><a href="~/../Empresa/EliminarEmpresa/@empresa.EmpresaRfc">Eliminar</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

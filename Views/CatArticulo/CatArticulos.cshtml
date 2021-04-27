@@ -1,0 +1,55 @@
+﻿@model List<CatArticulo>
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<div style="width: 100%; padding-bottom: 20px">
+    <div>
+        <div>
+            <h2>Catálogo de Artículos</h2>
+        </div>
+        <div>
+            <a href="~/../CatArticulo/CrearCatArticulo/">Agregar artículo al catálogo</a>
+        </div>
+    </div>
+</div>
+
+@if (TempData["EliminaUsuario"] != null)
+{
+    <div id="ElimUsMessage" class="alert alert-danger alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        @TempData["EliminaUsuario"]
+    </div>
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre del Artículo</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Tipo de Artículo</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var catArticulo in @Model)
+        {
+            <tr>
+                <th scope="row">@catArticulo.ArtId</th>
+                <td>@catArticulo.ArtNombre</td>
+                <td>@ViewBag.Context.Marcas.Find(catArticulo.MarcaId).VcMarcaName</td>
+                <td>@ViewBag.Context.CatTipoArts.Find(catArticulo.TipoArtId).TipoArtDesc</td>
+                <td><a href="~/../CatArticulo/EditarCatArticulo/@catArticulo.ArtId">Editar</a></td>
+                <td><a href="~/../CatArticulo/BorrarCatArticulo/@catArticulo.ArtId">Eliminar</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $('#ElimUsMessage').delay(3000).fadeOut();
+</script>

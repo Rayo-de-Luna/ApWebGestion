@@ -1,0 +1,53 @@
+﻿@model Empresa
+
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<h2>Nueva Empresa</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+<form method="POST">
+    <div class="form-group">
+        <label asp-for="EmpresaRfc" class="form-control">RFC</label>
+        <input type="text" asp-for="EmpresaRfc">
+        <span asp-validation-for="EmpresaRfc" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmpresaRazSoc" class="form-control">Razón Social</label>
+        <input type="text" asp-for="EmpresaRazSoc">
+        <span asp-validation-for="EmpresaRazSoc" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmpresaCalle" class="form-control">Calle</label>
+        <input type="text" asp-for="EmpresaCalle">
+        <span asp-validation-for="EmpresaCalle" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmpresaNumInt" class="form-control">Número interior</label>
+        <input type="text" asp-for="EmpresaNumInt">
+        <span asp-validation-for="EmpresaNumInt" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmpresaNumExt" class="form-control">Número exterior</label>
+        <input type="text" asp-for="EmpresaNumExt">
+        <span asp-validation-for="EmpresaNumExt" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmpresaCp" class="form-control">Código Postal</label>
+        <input type="text" asp-for="EmpresaCp">
+        <span asp-validation-for="EmpresaCp" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmpresaCd" class="form-control">Ciudad</label>
+        <input type="text" asp-for="EmpresaCd">
+        <span asp-validation-for="EmpresaCd" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmpresaEdo" class="form-control">Estado</label>
+        <input type="text" asp-for="EmpresaEdo">
+        <span asp-validation-for="EmpresaEdo" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Guardar"/>
+</form>

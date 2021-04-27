@@ -1,0 +1,43 @@
+﻿@model InvArticulo
+
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<h2>Nuevo Artículo al Inventario</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+<form method="POST">
+    <div class="form-group">
+        <label asp-for="ArtModelo" class="form-control">Modelo/Serie</label>
+        <input type="text" asp-for="ArtModelo">
+        <span asp-validation-for="ArtModelo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ArtDesc" class="form-control">Descripción</label>
+        <input type="text" asp-for="ArtDesc">
+        <span asp-validation-for="ArtDesc" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ArtId" class="form-control">Seleccione un artículo del catálogo</label>
+        @Html.DropDownList("ArtId", new SelectList(@ViewBag.CatArticulos, "Text", "Value"))
+        <span asp-validation-for="ArtId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CantidadNeta" class="form-control">Cantidad neta</label>
+        <input type="text" asp-for="CantidadNeta">
+        <span asp-validation-for="CantidadNeta" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CantidadPrestada" class="form-control">Cantidad prestada</label>
+        <input type="text" asp-for="CantidadPrestada">
+        <span asp-validation-for="CantidadPrestada" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CantidadEnAlmacen" class="form-control">Cantidad al almacén</label>
+        <input type="text" asp-for="CantidadEnAlmacen">
+        <span asp-validation-for="CantidadEnAlmacen" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Guardar"/>
+</form>

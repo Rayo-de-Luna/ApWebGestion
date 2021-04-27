@@ -1,0 +1,66 @@
+﻿@model List<Proyecto>
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<h2>Proyectos</h2>
+
+@if (TempData["PDFGenerado"] != null)
+{
+    <div id="PDFGenMessage" class="alert alert-success alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        @TempData["PDFGenerado"]
+    </div>
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre del Proyecto</th>
+                <th scope="col">Dispositivos/Material salido del almacén</th>
+                <th scope="col">Dispositivos/Material regresado del almacén</th>
+                <th scope="col">Autorización de Salida</th>
+                <th scope="col">Autorización de Entrada</th>
+                <th scope="col">Generar Reporte de Salida</th>
+                <th scope="col">Generar Reporte de Entrada</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var proyecto in @Model)
+            {
+                <tr>
+                    <th scope="row">@proyecto.ProyectoId</th>
+                    <td>@proyecto.ProyectoName</td>
+                    <td>
+                        <a href="~/../Almacen/Salidas/VerSalidas/@proyecto.ProyectoId">Ver</a>
+                    </td>
+                    <td>
+                        <a href="~/../Almacen/Entradas/VerEntradas/@proyecto.ProyectoId">Ver</a>
+                    </td>
+                    <td>
+                        <b>@proyecto.AuthSalida</b>
+                    </td>
+                    <td>
+                        <b>@proyecto.AuthEntrada</b>
+                    </td>
+                    <td>
+                        @if (proyecto.AuthSalida == "SI")
+                        {
+                            <a href="~/../Almacen/GenerarReporteSalida/@proyecto.ProyectoId">
+                                Generar Reporte
+                            </a>
+                        }
+                    </td>
+                    <td>
+                        @if (proyecto.AuthEntrada == "SI")
+                        {
+                            <a href="~/../Almacen/GenerarReporteEntrada/@proyecto.ProyectoId">Generar Reporte</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

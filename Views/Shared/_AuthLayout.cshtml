@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card login-logout-tab">
+            <div class="card-header">
+                <h1>    Silo Comunicaciones</h1>
+                <!--<li class="nav-item">
+        <a class="nav-link" href="/Identity/Account/Login">Iniciar sesión</a>
+    </li>-->
+                <!--
+    <li class="nav-item">
+        <a class="nav-link" href="/Identity/Account/Register">Agregar nuevo usuario</a>
+    </li>
+    -->
+            </div>
+            <div class="card-content">
+                <div class="col-md-12">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @RenderSection("Scripts", required: false)
+}

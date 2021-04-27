@@ -1,0 +1,156 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>AWGestion</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Esquemas\**" />
+    <Compile Remove="Views\Usuarios\**" />
+    <Content Remove="Models\Esquemas\**" />
+    <Content Remove="Views\Usuarios\**" />
+    <EmbeddedResource Remove="Models\Esquemas\**" />
+    <EmbeddedResource Remove="Views\Usuarios\**" />
+    <None Remove="Models\Esquemas\**" />
+    <None Remove="Views\Usuarios\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\AdminRoles.cs" />
+    <Compile Remove="Controllers\LoginController.cs" />
+    <Compile Remove="Controllers\RegistroController.cs" />
+    <Compile Remove="Models\CrearRolModel.cs" />
+    <Compile Remove="Models\Login.cs" />
+    <Compile Remove="Models\Registro.cs" />
+    <Compile Remove="Models\Usuarios.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\_AuthLayout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iTextSharp" Version="5.5.13.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0-preview3.19551.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Usuario\CrearUsuario.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Usuario\Usuarios.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Producto\BusquedaProducto.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Producto\CrearProducto.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Producto\EditarProducto.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Producto\Productos.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedor\CrearProveedor.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedor\EditarProveedor.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedor\Proveedores.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Venta\AgregarProducto.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Venta\ListaDeVentas.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Venta\NuevaVenta.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Venta\Venta.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Empresa\CrearEmpresa.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Empresa\EditarEmpresa.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Empresa\Empresas.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\CatArticulo\CatArticulos.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\CatArticulo\EditarCatArticulo.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\CatArticulo\CrearCatArticulo.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\CatTipoArt\CrearTipoArt.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\CatTipoArt\EditarTipoArt.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\CatTipoArt\CatTipoArts.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\InvArticulo\InvArticulos.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\InvArticulo\EditarInvArticulo.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\InvArticulo\CrearInvArticulo.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Proyecto\Proyectos.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Proyecto\EditarProyecto.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Proyecto\CrearProyecto.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Salida\Informacion.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Almacen\Salidas\VerSalidas.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Almacen\Salidas\AgregarSalidas.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Almacen\Entradas\VerEntradas.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Almacen\Entradas\AgregarEntradas.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\AuthAlma\Informacion.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+</Project>

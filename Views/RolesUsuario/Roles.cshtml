@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+@if (TempData["NoRol"] != null)
+{
+    <div id="NoRolMessage" class="alert alert-danger alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        @TempData["NoRol"]
+    </div>
+}
+
+@if (TempData["RolCreado"] != null)
+{
+    <div id="RolCreaMessage" class="alert alert-success alert-dismissible fade show">
+        @TempData["RolCreado"]
+    </div>
+}
+
+@if (TempData["RolModificado"] != null)
+{
+    <div id="RolModMessage" class="alert alert-success alert-dismissible fade show">
+        @TempData["RolModificado"]
+    </div>
+}
+
+<div style="width: 100%; padding-bottom: 20px">
+    <div>
+        <div>
+            <h2>Lista de Roles</h2>
+        </div>
+        <div>
+            <a href="~/../Rolesusuario/CrearRol/">Crear nuevo Rol</a>
+        </div>
+    </div>
+</div>
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre del Rol</th>
+                    <th scope="col">Establecer Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var rol in @Model)
+                {
+                    <tr>
+                        <th scope="row">@rol.Id</th>
+                        <td>@rol.Name</td>
+                        <td>
+                            <a asp-action="AgregarUsuario" asp-controller="RolesUsuario"
+                               asp-route-roleId="@rol.Id" class="btn btn-link">Administrar Usuarios</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div></div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre del Rol</th>
+                    <th scope="col">Establecer Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+}

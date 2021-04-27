@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using AWGestion.Areas.Identity.Data
+
+@inject SignInManager<AWGestionUsers> SignInManager
+@inject UserManager<AWGestionUsers> UserManager
+
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+        <ul class="navbar-nav flex-grow-1">
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="~/../Empresa/Empresas">Empresas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="~/../CatTipoArt/CatTipoArts">Tipos de artículos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="~/../CatArticulo/CatArticulos">Catálogo de artículos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="~/../Marca/Marcas">Marcas</a>
+                </li>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("PM"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="~/../InvArticulo/InvArticulos">Inventario</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="~/../Proyecto/Proyectos">Proyectos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="~/../Almacen/Informacion">Almacen</a>
+                </li>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="~/../AuthAlma/Informacion">Admin</a>
+                </li>
+            }
+        </ul>
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <em><strong><a class ="nav-link text-light" href="~/../RolesUsuario/Roles">@UserManager.GetUserName(User)</a></strong></em>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <em><strong><a class ="nav-link text-light">@UserManager.GetUserName(User)</a></strong></em>
+                </li>
+            }
+            <li class="nav-item">
+                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" href="~/">
+                    <button id="logout" type="submit" class="nav-link btn btn-link text-light">Cerrar sesión</button>
+                </form>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Registarse</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Iniciar Sesión</a>
+            </li>
+        }
+    </ul>

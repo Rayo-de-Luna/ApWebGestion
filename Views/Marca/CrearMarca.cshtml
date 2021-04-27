@@ -1,0 +1,21 @@
+﻿@model Marca
+
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<h2>Nueva Marca</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+<form method="POST">
+    <div class="form-group">
+        <input type="hidden" asp-for="VcMarcaStatus" value="AC">
+    </div>
+    <div class="form-group">
+        <label asp-for="VcMarcaName" class="form-control">Nombre de la nueva Marca</label>
+        <input type="text" asp-for="VcMarcaName">
+        <span asp-validation-for="VcMarcaName" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Guardar" />
+</form>

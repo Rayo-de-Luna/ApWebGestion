@@ -1,0 +1,31 @@
+﻿@model CatArticulo
+
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<h2>Edición del artículo: @Model.ArtNombre</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+<form method="POST">
+    <div class="form-group">
+        <input type="hidden" asp-for="ArtId" value="@Model.ArtId">
+    </div>
+    <div class="form-group">
+        <label asp-for="ArtNombre" class="form-control">Nombre del Producto</label>
+        <input type="text" asp-for="ArtNombre" value="@Model.ArtNombre">
+        <span asp-validation-for="ArtNombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MarcaId" class="form-control">Seleccione una Marca</label>
+        @Html.DropDownList("MarcaId", new SelectList(@ViewBag.Marcas, "Text", "Value"))
+        <span asp-validation-for="ArtNombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TipoArtId" class="form-control">Seleccione una Marca</label>
+        @Html.DropDownList("TipoArtId", new SelectList(@ViewBag.CatTipoArts, "Text", "Value"))
+        <span asp-validation-for="ArtNombre" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Guardar"/>
+</form>

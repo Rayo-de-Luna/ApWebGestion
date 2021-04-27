@@ -1,0 +1,42 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Inicio de sesion - Silo Comunicaciones";
+    Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
+}
+
+@*<h1>Sistema de Gestión Web v1.0</h1>*@
+<div>
+    <div>
+            <form id="account" method="post">
+                @*<hr />*@
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.UserName"></label>
+                    <input asp-for="Input.UserName" class="form-control" />
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe">
+                            <input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+                </div>
+            </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

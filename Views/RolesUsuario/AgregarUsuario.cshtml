@@ -1,0 +1,31 @@
+﻿@model List<AspNetUserRole>
+@{
+    var roleName = ViewBag.roleName;
+}
+
+<h1>Agregar usuario al rol: @roleName</h1>
+
+<form method="POST">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Añadido</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <input type="hidden" asp-for="@Model[i].UserId" />
+                        <input type="hidden" asp-for="@Model[i].UserName" />
+                        <th scope="row">@Model[i].UserName</th>
+                        <th><input asp-for="@Model[i].IsSelected" class="form-check-input" /></th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <input type="submit" value="Guardar" />
+</form>

@@ -1,0 +1,18 @@
+﻿@model CatTipoArt
+
+@{
+    ViewData["Title"] = "Silo Manager";
+}
+
+<h2>Edición del Proveedor </h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+<form method="POST">
+    <div class="form-group">
+        <label asp-for="TipoArtDesc" class="form-control">Tipo de artículo</label>
+        <input type="text" asp-for="TipoArtDesc" value="@Model.TipoArtDesc">
+        <span asp-validation-for="TipoArtDesc" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Guardar"/>
+</form>
